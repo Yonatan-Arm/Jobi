@@ -50,6 +50,7 @@ async function query(filterValue) {
   try {
     // const tasks = await axios.get(TASK_URL, { params: filterValue })
     const tasks = await storageService.query(STORAGE_KEY);
+    if(!tasks.length) storageService.postMany(STORAGE_KEY, Jobs )
     return tasks;
   } catch (error) {
     throw new Error("error on quey FE", error);
@@ -90,6 +91,7 @@ async function save(job) {
 
 function getEmptyJob() {
   return {
+    id:"",
     company: "",
     position: "",
     status: "applied",
