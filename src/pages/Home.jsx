@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function Home() {
   return (
-    <div>
-        <h1>home!!</h1>
+    <div className='home'>
+        <h2 > Jobi -search your new job</h2>
     </div>
   )
 }

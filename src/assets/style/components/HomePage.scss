@@ -1,5 +1,17 @@
 .App{
     padding: 20px 40px;
-    background-color: #444;
     min-height: 100vh;
+    background-image:   linear-gradient(to bottom, rgba(255, 252, 252, 0.1), rgba(252, 247, 224, 0.1)),
+     url("../../imgs/hero.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+}
+
+.home{
+  margin-top: 20px;
+  h2{
+    text-align: center;
+  }
 }
