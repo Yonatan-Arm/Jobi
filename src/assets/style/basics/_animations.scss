@@ -68,3 +68,22 @@
         transform: scale(1);
     }
 }
+
+
+@keyframes rotate {
+    0% {
+        transform: rotate(45deg);
+    }
+
+    30% {
+        transform: rotate(-45deg);
+    }
+
+    70% {
+        transform: rotate(45deg);
+    }
+
+    100% {
+        transform: rotate(0);
+    }
+}

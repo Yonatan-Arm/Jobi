@@ -5,6 +5,7 @@
       padding: 20px
     }
     h3{
+      font-weight: 600;
         img{
             margin-right: 4px;
             width: 20px;
@@ -41,6 +42,7 @@
         gap: 15px;
         position: fixed;
         padding: 15px;
+        z-index: 100;
         button{
             right: 2px;
             top: 2px;
