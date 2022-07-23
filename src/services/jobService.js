@@ -77,7 +77,7 @@ async function remove(id) {
 
 async function save(job) {
   try {
-    if (job._id) {
+    if (job.id) {
       // return await axios.put(`${TASK_URL}`, task)
       return await storageService.put(STORAGE_KEY, job);
     }
@@ -91,7 +91,7 @@ async function save(job) {
 
 function getEmptyJob() {
   return {
-    id:"",
+    id:null,
     company: "",
     position: "",
     status: "applied",
