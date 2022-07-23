@@ -20,7 +20,7 @@ export default function JobEdit() {
 
   const onSaveJob = async (ev) => {
     ev.preventDefault()
-    console.log('job',job);
+    if(!job.company) return 
     await jobService.save({...job})
     navigate("/")
 }
@@ -33,13 +33,20 @@ export default function JobEdit() {
       <section className='edit'>
             <h2>{job.id ? 'Edit' : 'Add'} job</h2>
             <button onClick={() => navigate("/")}> back</button>
-            <form onSubmit={onSaveJob} className='flex column' >
+            <form onSubmit={onSaveJob}  className="flex column">
+              <div  className="flex column">
                 <label htmlFor="company">company</label>
                 <input  onChange={handleChange} value={job.company} type="text" name="company" id="company" />
+              </div>
+              <div  className="flex column">
                 <label htmlFor="position">position</label>
                 <input  onChange={handleChange} value={job.position} type="text" name="position" id="position" />
+              </div>
+              <div  className="flex column">
                 <label htmlFor="description">description</label>
                 <input  onChange={handleChange} value={job.description} type="text" name="description" id="description" />
+              </div>
+              <div className="flex column">
                 <label htmlFor="status">status</label>
                 <select onChange={handleChange} value={job.status} name="status" id="status">
                     <option value="" disabled> status</option>
@@ -47,14 +54,17 @@ export default function JobEdit() {
                     <option value="rejected">rejected</option>
                     <option value="interviews">interviews</option>
                 </select>
-                <label htmlFor="importance">Type</label>
+              </div>
+              <div className="flex column">
+                <label htmlFor="importance">importance</label>
                 <select onChange={handleChange} value={job.importance} name="importance" id="importance">
-                    <option value="" disabled>Choose a importance</option>
-                    <option value='0'>0</option>
+                    <option value="" disabled>importance</option>
+                    <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                 </select>
+              </div>
                 <button>Save</button>
             </form>
        </section>

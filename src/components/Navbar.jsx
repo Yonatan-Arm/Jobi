@@ -1,10 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import search from '../assets/imgs/search.svg'
 import menu from '../assets/imgs/menu.svg'
 
 export default function Navbar() {
     const [isOpenModel, setIsOpenModel] = useState(false)
+    useEffect(() => {
+      return () => {
+        setIsOpenModel(false)
+      }
+    }, [])
+    
 
 
   return (
