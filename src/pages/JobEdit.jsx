@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { jobService } from "../services/jobService";
 import { useForm } from '../hooks/useForm'
+import backBtn from '../assets/imgs/back.svg'
 
 export default function JobEdit() {
   const [job,handleChange, setJob] = useForm(null);
@@ -47,7 +48,7 @@ const renderImportance = () => {
   return (
       <section className='edit'>
             <h2>{job.id ? 'Edit' : 'Add'} job</h2>
-            <button onClick={() => navigate("/")}> back</button>
+            <img src={backBtn} alt="back" className="back-btn" onClick={() => navigate("/")} title="back" />
             <form onSubmit={onSaveJob}  className="flex column">  
               <div  className="flex column">
                 <label htmlFor="company">company</label>

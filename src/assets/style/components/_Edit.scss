@@ -1,80 +1,96 @@
-.edit{
+.edit {
     padding: 10px;
     width: 350px;
     margin: 0 auto;
     box-shadow:
-    rgba(22, 31, 39, 0.42) 0px 60px 123px -25px,
-    rgba(19, 26, 32, 0.08) 0px 35px 75px -35px;
-  border-radius: 10px;
-  border: 1px solid;
-  border-color:
-    rgb(213, 220, 226)
-    rgb(213, 220, 226)
-    rgb(184, 194, 204);
+        rgba(22, 31, 39, 0.42) 0px 60px 123px -25px,
+        rgba(19, 26, 32, 0.08) 0px 35px 75px -35px;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color:
+        rgb(213, 220, 226) rgb(213, 220, 226) rgb(184, 194, 204);
     background-color: aliceblue;
     opacity: .9;
     position: relative;
+
     @include for-tablet-layout {
         width: 70%;
-      }
-      
+    }
+
     @include for-mobile-layout {
         width: 80%;
-      }
+    }
+
     @include for-mini-layout {
         width: 90%;
-      }
-    button:first-child{
-        width: 40px;
-        border: none;
-        background: none;
     }
-    form{
+
+    .back-btn {
+        width: 25px;
+        cursor: pointer;
+    }
+
+    form {
         gap: 10px;
-        button{
-            width: 40px;
+
+        button {
             position: absolute;
             right: 15px;
             bottom: 13px;
+            border-radius: 4px;
+            background-color: #d1d5de;
+            border: none;
+            font-size: 13px;
+            font-family: system-ui;
+            font-weight: 620;
+            padding: 5px;
         }
+
         select[name="importance"] {
-            width: 40px;
+            width: 50px;
         }
-        select{
-            width: 90px ;
+
+        select {
+            width: 90px;
             height: 25px;
             border-radius: 4px;
             border: 2px solid grey;
-            option{
+
+            option {
                 height: 40px;
             }
         }
-        input{
+
+        input {
             height: 30px;
             width: 80%;
             border-radius: 4px;
             border: 2px solid grey;
         }
-        label{
+
+        label {
             margin-bottom: 2px;
         }
-        .line{
+
+        .line {
             gap: 30px;
             position: relative;
-            .importance{
+
+            .importance {
                 border-radius: 50%;
                 width: 16px;
                 height: 16px;
-               position: absolute;
-               bottom: 5px;
-               align-self: flex-end;
-    
+                position: absolute;
+                bottom: 5px;
+                align-self: flex-end;
+
             }
         }
- 
+
 
     }
-    h2{
+
+    h2 {
         text-align: center;
     }
 
