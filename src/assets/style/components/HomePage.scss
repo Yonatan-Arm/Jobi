@@ -34,5 +34,18 @@
   h2{
     text-align: center;
     font-weight: 500;
+    margin-bottom: 10px;
   }
+  .add-btn{
+    margin-left: 15px;
+    @include for-mobile-layout {
+      margin-left: 8px;
+    }
+    img{
+      width: 30px;
+    }
+    img:hover{
+      width: 31px;
+    }
+    }
 }

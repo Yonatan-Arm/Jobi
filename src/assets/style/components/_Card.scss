@@ -1,5 +1,5 @@
 .job-card{
-    padding: 10px;
+    padding: 25px 20px;
     font-weight: 600;
     box-shadow:
     rgba(22, 31, 39, 0.42) 0px 60px 123px -25px,
@@ -30,6 +30,16 @@
             display: inline-flex;
 
         }
+    }
+    .status{
+        position: absolute;
+        transform: rotate(338deg);
+        left: 0;
+        top: 5px;
+        font-size: 12px;
+        font-weight: 700;
+        border-bottom: 2px solid #4d3838;
+        border-top: 2px solid #4d3838;
     }
 
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import JobList from "../components/JobList";
 import { jobService } from "../services/jobService";
+import fileAddLogo from '../assets/imgs/file-add.svg'
 
 export default function Home() {
   const [jobs, setJobs] = useState(null);
@@ -25,11 +26,9 @@ export default function Home() {
   return (
     <div className="home">
       <h2> Jobi -search your new job</h2>
-      <Link  to="edit">edit </Link>
+      <Link className="add-btn"  to="edit"><img src={fileAddLogo} alt='add-logo' /> </Link>
       {jobs && (
-        <div className="">
           <JobList jobs={jobs} onRemoveJob={onRemoveJob} />
-        </div>
       )}
     </div>
   );

@@ -1,6 +1,6 @@
 .edit{
     padding: 10px;
-    width: 500px;
+    width: 350px;
     margin: 0 auto;
     box-shadow:
     rgba(22, 31, 39, 0.42) 0px 60px 123px -25px,
@@ -12,13 +12,16 @@
     rgb(213, 220, 226)
     rgb(184, 194, 204);
     background-color: aliceblue;
-    opacity: .8;
+    opacity: .9;
     position: relative;
     @include for-tablet-layout {
         width: 70%;
       }
       
     @include for-mobile-layout {
+        width: 80%;
+      }
+    @include for-mini-layout {
         width: 90%;
       }
     button:first-child{
@@ -32,7 +35,7 @@
             width: 40px;
             position: absolute;
             right: 15px;
-            bottom: 10px;
+            bottom: 13px;
         }
         select[name="importance"] {
             width: 40px;
@@ -40,20 +43,33 @@
         select{
             width: 90px ;
             height: 25px;
+            border-radius: 4px;
+            border: 2px solid grey;
             option{
                 height: 40px;
             }
         }
-        input[name="company"]{
-            width: 90px;
-        }
         input{
             height: 30px;
-            width: 150px;
+            width: 80%;
             border-radius: 4px;
+            border: 2px solid grey;
         }
         label{
             margin-bottom: 2px;
+        }
+        .line{
+            gap: 30px;
+            position: relative;
+            .importance{
+                border-radius: 50%;
+                width: 16px;
+                height: 16px;
+               position: absolute;
+               bottom: 5px;
+               align-self: flex-end;
+    
+            }
         }
  
 

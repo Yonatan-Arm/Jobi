@@ -25,6 +25,21 @@ export default function JobEdit() {
     navigate("/")
 }
 
+const renderImportance = () => {
+  switch(job.importance) {
+    case '0':
+      return '#acb8c6';
+      case '1':
+        return '#4d99e9';
+    case '2':
+      return '#ab9745';
+    case '3':
+      return '#ff2525';
+    default:
+      return 'grey';
+  }
+}
+
 
 
   if (!job) return <div>load...</div>;
@@ -33,7 +48,7 @@ export default function JobEdit() {
       <section className='edit'>
             <h2>{job.id ? 'Edit' : 'Add'} job</h2>
             <button onClick={() => navigate("/")}> back</button>
-            <form onSubmit={onSaveJob}  className="flex column">
+            <form onSubmit={onSaveJob}  className="flex column">  
               <div  className="flex column">
                 <label htmlFor="company">company</label>
                 <input  onChange={handleChange} value={job.company} type="text" name="company" id="company" />
@@ -46,6 +61,7 @@ export default function JobEdit() {
                 <label htmlFor="description">description</label>
                 <input  onChange={handleChange} value={job.description} type="text" name="description" id="description" />
               </div>
+              <div className="flex row line">      
               <div className="flex column">
                 <label htmlFor="status">status</label>
                 <select onChange={handleChange} value={job.status} name="status" id="status">
@@ -55,6 +71,7 @@ export default function JobEdit() {
                     <option value="interviews">interviews</option>
                 </select>
               </div>
+              
               <div className="flex column">
                 <label htmlFor="importance">importance</label>
                 <select onChange={handleChange} value={job.importance} name="importance" id="importance">
@@ -64,6 +81,8 @@ export default function JobEdit() {
                     <option value="2">2</option>
                     <option value="3">3</option>
                 </select>
+              <span style={{background : renderImportance()}} className="importance"></span>
+              </div>
               </div>
                 <button>Save</button>
             </form>

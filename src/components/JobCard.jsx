@@ -7,13 +7,25 @@ export default function JobCard({ job, onRemoveJob }) {
    const renderImportance = () => {
     switch(job.importance) {
       case '0':
-        return 'white';
+        return '#acb8c6';
         case '1':
-          return 'green';
+          return '#4d99e9';
       case '2':
-        return 'yellow';
+        return '#ab9745';
       case '3':
-        return 'red';
+        return '#ff2525';
+      default:
+        return 'grey';
+    }
+  }
+   const renderStatus = () => {
+    switch(job.status) {
+      case 'applied':
+        return '#4d99e9';
+        case 'rejected':
+          return '#e13450';
+      case 'interviews':
+        return '#3e7b1c';
       default:
         return 'grey';
     }
@@ -21,6 +33,7 @@ export default function JobCard({ job, onRemoveJob }) {
 
   return (
     <div className="job-card flex column">
+      
       <div className="actions flex  justify-center row">
       <span style={{background : renderImportance()}} className="importance"></span>
       <img src={trash} alt="trash" title="trash" onClick={()=>onRemoveJob(job.id)} />
@@ -34,6 +47,7 @@ export default function JobCard({ job, onRemoveJob }) {
         {" "}
         applied at : {new Date(job.createdAt).toLocaleDateString("IL")}
       </span>
+      <span className="status" style={{color : renderStatus()}}> {job.status}</span>
     </div>
   );
 }
