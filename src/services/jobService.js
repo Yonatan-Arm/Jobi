@@ -50,7 +50,10 @@ async function query(filterValue) {
   try {
     // const tasks = await axios.get(TASK_URL, { params: filterValue })
     const tasks = await storageService.query(STORAGE_KEY);
-    if(!tasks.length) storageService.postMany(STORAGE_KEY, Jobs )
+    if(!tasks.length){
+      const jobs = await storageService.postMany(STORAGE_KEY, Jobs )
+      return jobs
+    }
     return tasks;
   } catch (error) {
     throw new Error("error on quey FE", error);

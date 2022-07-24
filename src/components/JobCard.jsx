@@ -3,7 +3,7 @@ import trash from "../assets/imgs/trash.svg";
 import edit from "../assets/imgs/edit.svg";
 import { Link } from 'react-router-dom'
 
-export default function JobCard({ job, onRemoveJob }) {
+export default function JobCard({ job, onRemoveJob, onSelectJob  }) {
    const renderImportance = () => {
     switch(job.importance) {
       case '0':
@@ -32,11 +32,10 @@ export default function JobCard({ job, onRemoveJob }) {
   }
 
   return (
-    <div className="job-card flex column">
-      
+    <div className="job-card flex column" onClick={()=>onSelectJob(job.id)}  >
       <div className="actions flex  justify-center row">
       <span style={{background : renderImportance()}} className="importance"></span>
-      <img src={trash} alt="trash" title="trash" onClick={()=>onRemoveJob(job.id)} />
+      <img src={trash} alt="trash" title="trash" onClick={(ev)=>onRemoveJob(job.id,ev)} />
       <Link to={`edit/${job.id}`}>  <img src={edit} alt="edit" title="edit"/></Link>
       </div>
       <span> {job.company}</span>

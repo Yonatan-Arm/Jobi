@@ -1,0 +1,29 @@
+.job-modal{
+    z-index: 100;
+    .modal-content{
+        border-radius: 12px;
+        height: 50vh;
+        width: 40vw;
+        padding: 15px;
+        @include for-tablet-layout {
+            width: 60vw;
+          }
+        @include for-mobile-layout {
+            width: 80vw;
+          }
+        .actions{
+                right: 5px;
+                top: 8px;
+                position: absolute;
+                gap: 3px;
+                align-items: flex-start;
+                img {
+                    width: 20px;
+                    cursor: pointer;
+                }
+        }
+    }
+
+  
+    
+}

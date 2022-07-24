@@ -32,12 +32,11 @@ function post(entityType, newEntity) {
   });
 }
 
-function postMany(entityType, newEntities) {
-  return query(entityType).then((entities) => {
-    entities.push(...newEntities);
+async function postMany(entityType, newEntities) {
+  const entities = await query(entityType)
+  entities.push(...newEntities);
     _save(entityType, entities);
     return entities;
-  });
 }
 
 function put(entityType, updatedEntity) {
