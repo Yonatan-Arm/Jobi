@@ -1,0 +1,50 @@
+.about {
+    padding: 20px;
+    margin-top: 20px;
+    margin: 0 auto;
+    width: 60%;
+    min-height: 85vh;
+    text-align: center;
+    box-shadow:
+        rgba(22, 31, 39, 0.42) 0px 60px 123px -25px,
+        rgba(19, 26, 32, 0.08) 0px 35px 75px -35px;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color:
+        rgb(213, 220, 226) rgb(213, 220, 226) rgb(184, 194, 204);
+    background-color: aliceblue;
+    gap: 10px;
+    font-weight: 700;
+      @include for-tablet-layout {
+        width: 100%;
+      }
+    p{
+        font-weight: 600;
+        width: 50%;
+    }
+    .profile-pic{
+            width: 350px;
+            border-radius: 50%;
+            box-shadow:
+            rgba(22, 31, 39, 0.42) 0px 60px 123px -25px,
+            rgba(19, 26, 32, 0.08) 0px 35px 75px -35px;
+            height: 350px;
+            @include for-wide-layout {
+                width: 50%;
+                height: 300px;
+              }
+            @include for-mobile-layout {
+                width: 70%;
+                height: 250px;
+              }
+    }
+    .sociel-links{
+        margin-top: rem(30px);
+        gap: rem(20px);
+        img{
+            margin-right: rem(3px);
+            width: rem(25px);
+        }
+
+    }
+}
