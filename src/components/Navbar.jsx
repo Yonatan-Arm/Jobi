@@ -23,6 +23,8 @@ export default function Navbar() {
         <div className='links flex'>
         <Link to ="about" >about</Link>
         <Link to ="" >home</Link>
+        <Link to ="signup" >signup</Link>
+        <Link to ="login" >Login</Link>
         </div>
 
         <div className='mobile-nav'>
@@ -31,6 +33,8 @@ export default function Navbar() {
         <div className='flex column mobile-model align-center'>
         <Link to ="about" >about</Link>
         <Link to ="" >home</Link>
+        <Link to ="signup" >signup</Link>
+        <Link to ="login" >Login</Link>
           <button onClick={()=> {setIsOpenModel(false)}}>X</button>
         </div>
       }
