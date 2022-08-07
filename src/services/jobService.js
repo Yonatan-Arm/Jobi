@@ -18,8 +18,8 @@ const Jobs = [
     importance: 2,
     createdAt: Date.now(),
     interviews: [
-      "1 interview(Hr+ misiion in company)",
-      "1 interview(hr +  tecinacal questions)",
+      "hr interview",
+      "mission in company",
     ],
   },
   {
@@ -40,7 +40,8 @@ const Jobs = [
     description: "comapany of projects",
     importance: 1,
     createdAt: Date.now(),
-    interviews: ["1 interview( misiion in home in js + html)"],
+    interviews: [ "hr interview",
+    "mission in company",],
   },
 ];
 

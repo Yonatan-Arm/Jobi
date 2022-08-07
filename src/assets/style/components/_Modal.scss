@@ -1,6 +1,7 @@
 .job-modal {
   z-index: 100;
   padding: 15px;
+
   .modal-content {
     border-radius: 12px;
     height: 50vh;
@@ -13,6 +14,7 @@
     @include for-wide-layout {
       width: 50vw;
     }
+
     @include for-tablet-layout {
       width: 60vw;
     }
@@ -20,6 +22,19 @@
     @include for-mobile-layout {
       width: 80vw;
     }
+
+    .interviews {
+      img {
+        width: 20px;
+        margin-right: 5px;
+      }
+
+      span {
+        align-items: center;
+        display: flex;
+      }
+    }
+
     .actions {
       right: 5px;
       top: 8px;

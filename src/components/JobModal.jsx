@@ -2,6 +2,7 @@ import React from "react";
 import trash from "../assets/imgs/trash.svg";
 import edit from "../assets/imgs/edit.svg";
 import xSqure from "../assets/imgs/x-square.svg";
+import check from "../assets/imgs/check.svg";
 import { Link } from "react-router-dom";
 
 export default function JobModal({ job, onRemoveJob, UnSelcetJob }) {
@@ -38,7 +39,7 @@ export default function JobModal({ job, onRemoveJob, UnSelcetJob }) {
             onClick={() => UnSelcetJob()}
           />
         </div>
-        <h3>company: {job.company}</h3>
+        <span>company: {job.company}</span>
         <span>position: {job.position}</span>
         <span >status: <span style={{color : renderStatus()}}> {job.status}</span>
         </span>
@@ -50,7 +51,7 @@ export default function JobModal({ job, onRemoveJob, UnSelcetJob }) {
           <div className="interviews flex column">
             <span>  interviews :{" "} </span>
             {job.interviews.map((interview, idx) => {
-               return (<span key={idx}> {interview} </span>);
+               return (<span key={idx}> <img src={check} alt="check" /> {interview} </span>);
             })}
           </div>
         ) : (
