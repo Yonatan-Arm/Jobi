@@ -6,7 +6,7 @@ export default function JobList({jobs, onRemoveJob,onSelectJob}) {
     <div className='cards-list simple-cards-grid '>
         {jobs.map((job) =>{
             return(
-            <JobCard job={job}  onRemoveJob={onRemoveJob} onSelectJob={onSelectJob}  key={job.id} />
+            <JobCard job={job}  onRemoveJob={onRemoveJob} onSelectJob={onSelectJob}  key={job._id} />
         )})}
         
 

@@ -10,7 +10,7 @@ export const jobService = {
 const STORAGE_KEY = "jobs_db";
 const Jobs = [
   {
-    id:'1d5s2',
+    _id:'1d5s2',
     company: "inMange ",
     position: "Frontend developer",
     status: "rejected",
@@ -23,7 +23,7 @@ const Jobs = [
     ],
   },
   {
-    id:'s5a6a',
+    _id:'s5a6a',
     company: "Dateflow ",
     position: "Frontend developer",
     status: "applied",
@@ -33,7 +33,7 @@ const Jobs = [
     interviews: [],
   },
   {
-    id:'25s6s',
+    _id:'25s6s',
     company: "slash ",
     position: "Frontend developer",
     status: "rejected",

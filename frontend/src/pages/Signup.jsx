@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../hooks/useForm";
 import { userService } from "../services/user.service.js";
-// import { setUSER } from "../store/actions/userActions";
+import {  onSignup } from '../store/actions/userActions.js';
 // import Loader from '../components/Loader'
 
 
 export default function Signup() {
   const [user, handleChange, setUser] = useForm(null);
-//   const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const navigate = useNavigate();
 
 
@@ -25,9 +25,7 @@ export default function Signup() {
   const onSaveUser = async (ev) => {
     ev.preventDefault();
     if (!user.name && !user.password) return;
-   const userToSave = await userService.signup(JSON.parse(JSON.stringify(user)))
-   console.log(userToSave);
-  //  await dispatch(setUSER(userToSave))
+    await dispatch(onSignup(JSON.parse(JSON.stringify(user))))
     navigate("/")
   };
 

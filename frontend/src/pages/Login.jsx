@@ -2,31 +2,34 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userService } from "../services/user.service.js";
 import { useForm } from "../hooks/useForm";
-// import { useDispatch } from "react-redux";
-// import {setUSER} from '../store/actions/userActions.js'
+import { useDispatch } from "react-redux";
+import { onLogin } from '../store/actions/userActions.js'
 // import Loader from '../components/Loader'
 
 export default function Login() {
   const [user, handleChange, setUser] = useForm(null);
   const navigate = useNavigate();
   const [warning, setWarning] = useState(false);
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
-  const onLogin = async (ev) => {
+  const login = async (ev) => {
     ev.preventDefault();
-    let userLogin = await userService.login(JSON.parse(JSON.stringify(user)));
-    if (!userLogin) {
+    try {
+      if(!user.password || !user.username){
+        setWarning(true);
+            user.password = "";
+            setTimeout(() => {
+              setWarning(false);
+            }, 3000);
+            return;
+      } 
+     const userLogin = await dispatch(onLogin((JSON.parse(JSON.stringify(user)))))
+     if(!userLogin) return
+     else navigate('/')
+    } catch (err) {
       setWarning(true);
-      user.password = "";
-      setTimeout(() => {
-        setWarning(false);
-      }, 3000);
-      return;
     }
-    // await dispatch(setUSER(userLogin))
-    navigate("/");
-  };
-
+  }
 
 
   useEffect(() => {
@@ -43,7 +46,7 @@ export default function Login() {
   return (
     <section className="login-page">
       <h3 className="text-center">Login</h3>
-      <form onSubmit={onLogin} className="flex column">
+      <form onSubmit={login} className="flex column">
         <div className="flex column">
           <label htmlFor="username">username:</label>
           <input

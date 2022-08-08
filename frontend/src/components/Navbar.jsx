@@ -1,48 +1,85 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import search from '../assets/imgs/search.svg'
-import menu from '../assets/imgs/menu.svg'
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { onLogout } from '../store/actions/userActions.js'
+import search from "../assets/imgs/search.svg";
+import menu from "../assets/imgs/menu.svg";
 
 export default function Navbar() {
-    const [isOpenModel, setIsOpenModel] = useState(false)
-    useEffect(() => {
-      return () => {
-        setIsOpenModel(false)
-      }
-    }, [])
-    
+  const [isOpenModel, setIsOpenModel] = useState(false);
+  const { user } = useSelector(({ userModule }) => userModule);
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const location = useLocation()
+  useEffect(() => {
+    return () => {
+      setIsOpenModel(false);
+    };
+  }, [location]);
 
+  const onLogOut = async () => {
+     dispatch(onLogout())
+    navigate("login");
+  };
 
   return (
-    <div className='navbar'>
-        <div className='nav flex space-between justify-center align-center'>
-        <div className='logo'>
-        <h3 className=' flex justify-center align-center'> 
-            <img src={search} alt="search" /> Jobi </h3>
+    <div className="navbar">
+      <div className="nav flex space-between justify-center align-center">
+        <div className="logo">
+          <h3 className=" flex justify-center align-center">
+            <img src={search} alt="search" /> Jobi{" "}
+          </h3>
         </div>
-        <div className='links flex'>
-        <Link to ="about" >about</Link>
-        <Link to ="" >home</Link>
-        <Link to ="signup" >signup</Link>
-        <Link to ="login" >Login</Link>
+        <div className="links flex">
+          <Link to="about">about</Link>
+          <Link to="">home</Link>
+          {user ? (
+            <span onClick={onLogOut} className="clickable">
+              {" "}
+              logout
+            </span>
+          ) : (
+            <div>
+             <span> <Link to="signup">signup</Link>  </span>
+             <span> <Link to="login">Login</Link>  </span>
+            </div>
+          )}
         </div>
 
-        <div className='mobile-nav'>
-        <img src={menu} alt="menu"  onClick={()=> {setIsOpenModel(true)}}/>
-           {isOpenModel  &&
-        <div className='flex column mobile-model align-center'>
-        <Link to ="about" >about</Link>
-        <Link to ="" >home</Link>
-        <Link to ="signup" >signup</Link>
-        <Link to ="login" >Login</Link>
-          <button onClick={()=> {setIsOpenModel(false)}}>X</button>
+        <div className="mobile-nav">
+          <img
+            src={menu}
+            alt="menu"
+            onClick={() => {
+              setIsOpenModel(true);
+            }}
+          />
+          {isOpenModel && (
+            <div className="flex column mobile-model align-center">
+              <Link to="about">about</Link>
+              <Link to="">home</Link>
+              {user ? (
+            <span onClick={onLogOut} className="clickable">
+              {" "}
+              logout
+            </span>
+          ) : (
+            <div className="flex column">
+             <span> <Link to="signup">signup</Link>  </span>
+             <span> <Link to="login">Login</Link>  </span>
+            </div>
+          )}
+              <button
+                onClick={() => {
+                  setIsOpenModel(false);
+                }}
+              >
+                X
+              </button>
+            </div>
+          )}
         </div>
-      }
       </div>
-        </div>
-
-   
-
     </div>
-  )
+  );
 }

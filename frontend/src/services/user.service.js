@@ -14,12 +14,13 @@ const STORAGE_KEY = "user_db";
 async function login(userInfo) {
   try {
     const user = await getByUsername(userInfo.username, userInfo.password);
-    console.log(user);
-    if (!user) console.log("Invalid username or password");
-    utilService.saveToSessionStorage(LOGGEDIN_KEY, user);
-    return user;
-  } catch {
-    console.log("cant login");
+    if (!user) return;
+    else {
+      utilService.saveToSessionStorage(LOGGEDIN_KEY, user);
+      return user;
+    }
+  } catch (err) {
+    throw err;
   }
 }
 async function signup(user) {
@@ -62,7 +63,7 @@ function getEmptyUser() {
     password: "",
     jobs: [
       {
-        id: "1d5s2",
+        _id: "1d5s2",
         company: "inMange ",
         position: "Frontend developer",
         status: "rejected",
@@ -72,7 +73,7 @@ function getEmptyUser() {
         interviews: ["hr interview", "mission in company"],
       },
       {
-        id: "s5a6a",
+        _id: "s5a6a",
         company: "Dateflow ",
         position: "Frontend developer",
         status: "applied",
@@ -82,7 +83,7 @@ function getEmptyUser() {
         interviews: [],
       },
       {
-        id: "25s6s",
+        _id: "25s6s",
         company: "slash ",
         position: "Frontend developer",
         status: "rejected",
