@@ -1,33 +1,34 @@
 import { utilService } from "./util.service.js";
 import { storageService } from "./async.service.js";
+import { httpService } from "./http.service.js";
 export const userService = {
   login,
   signup,
   logout,
   getLoggedinUser,
   getEmptyUser,
+  update,
+  add,
 };
 
 const LOGGEDIN_KEY = "LoggedInUser";
 const STORAGE_KEY = "user_db";
+const ENDPOINT = "user";
 
 async function login(userInfo) {
   try {
-    const user = await getByUsername(userInfo.username, userInfo.password);
-    if (!user) return;
-    else {
-      utilService.saveToSessionStorage(LOGGEDIN_KEY, user);
+    const user = await httpService.post("auth/login", userInfo);
+    if (user) utilService.saveToSessionStorage(LOGGEDIN_KEY, user);;
       return user;
-    }
   } catch (err) {
     throw err;
   }
 }
 async function signup(user) {
   try {
-    await storageService.post(STORAGE_KEY, user);
+    const userToSave = await httpService.post("auth/signup", user);
     utilService.saveToSessionStorage(LOGGEDIN_KEY, user);
-    return user;
+    return userToSave;
   } catch {
     console.log("cant login");
   }
@@ -44,27 +45,30 @@ async function logout() {
   }
 }
 
-async function getByUsername(username, password) {
+
+
+async function add(user) {
+  return await httpService.post(ENDPOINT, user);
+}
+
+async function update(user) {
   try {
-    const collection = await storageService.query(STORAGE_KEY);
-    const user = await collection.filter(
-      (user) => user.username === username && user.password === password
-    );
-    return user[0];
+    return await httpService.put(`${ENDPOINT}/${user._id}`, user);
   } catch (err) {
-    throw err;
+    console.log("cannot update user", err);
   }
 }
 
+
 function getEmptyUser() {
   return {
-    id: null,
+    _id: null,
     username: "",
     password: "",
     jobs: [
       {
         _id: "1d5s2",
-        company: "inMange ",
+        company: "Meta ",
         position: "Frontend developer",
         status: "rejected",
         description: "comapany of projects",
@@ -74,8 +78,8 @@ function getEmptyUser() {
       },
       {
         _id: "s5a6a",
-        company: "Dateflow ",
-        position: "Frontend developer",
+        company: "Microsoft ",
+        position: "Fullstack developer",
         status: "applied",
         description: "comapany of projects",
         importance: 4,
@@ -84,10 +88,10 @@ function getEmptyUser() {
       },
       {
         _id: "25s6s",
-        company: "slash ",
+        company: "Google ",
         position: "Frontend developer",
         status: "rejected",
-        description: "comapany of projects",
+        description: "comapany of websites",
         importance: 1,
         createdAt: Date.now(),
         interviews: ["hr interview", "mission in company"],
@@ -95,3 +99,5 @@ function getEmptyUser() {
     ],
   };
 }
+
+

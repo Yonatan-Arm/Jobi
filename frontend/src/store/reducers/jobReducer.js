@@ -26,14 +26,6 @@ export function jobReducer(state = INITIAL_STATE, action) {
         ),
       };
 
-    case "UPDATE_JOB":
-      return {
-        ...state,
-        jobs: state.jobs.map((job) =>
-        job._id === action.jobToSave._id ? action.job : job
-        ),
-      };
-
     default:
       return state;
   }

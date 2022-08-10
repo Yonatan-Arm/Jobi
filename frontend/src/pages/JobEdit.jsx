@@ -4,20 +4,33 @@ import { jobService } from "../services/jobService";
 import { useForm } from "../hooks/useForm";
 import backBtn from "../assets/imgs/back.svg";
 import { MultiSelect } from "react-multi-select-component";
+import { useDispatch, useSelector } from "react-redux";
+import { addJob } from "../store/actions/jobActions";
 
 export default function JobEdit() {
   const [job, handleChange, setJob] = useForm(null);
   const [selected, setSelected] = useState([]);
+  const { user } = useSelector(({ userModule }) => userModule);
+
 
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch()
+
+  const options = [
+    { label: "phone interview", value: "phone interview" },
+    { label: "hr interview", value: "hr interview" },
+    { label: "mission in company", value: "mission in company" },
+    { label: "tecinacal questions", value: "tecinacal questions" },
+    { label: "contract", value: "contract" },
+  ];
 
   useEffect(() => {
     loadJob();
   }, []);
 
   const loadJob = async () => {
-    const job = id ? await jobService.getById(id) : jobService.getEmptyJob();
+    const job = id ? await jobService.getJobById(user.jobs,id) : jobService.getEmptyJob();
     setJob(job);
     if (job.interviews.length > 0) {
       let selectedItems = job.interviews.map((interview) => {
@@ -26,13 +39,7 @@ export default function JobEdit() {
       setSelected(selectedItems);
     }
   };
-  const options = [
-    { label: "phone interview", value: "phone interview" },
-    { label: "hr interview", value: "hr interview" },
-    { label: "mission in company", value: "mission in company" },
-    { label: "tecinacal questions", value: "tecinacal questions" },
-    { label: "contract", value: "contract" },
-  ];
+
   const onSaveJob = async (ev) => {
     ev.preventDefault();
     if (!job.company) return;
@@ -41,7 +48,7 @@ export default function JobEdit() {
       interviews.push(select.value);
     }
     job.interviews = [...interviews];
-    await jobService.save({ ...job });
+  await dispatch(addJob({ ...job }, user))
     navigate("/");
   };
 

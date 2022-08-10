@@ -1,7 +1,9 @@
 import { storageService } from "./async.service.js";
+import { userService } from "./user.service.js";
+import { utilService } from "./util.service.js";
 export const jobService = {
   query,
-  getById,
+  getJobById,
   remove,
   save,
   getEmptyJob,
@@ -10,20 +12,17 @@ export const jobService = {
 const STORAGE_KEY = "jobs_db";
 const Jobs = [
   {
-    _id:'1d5s2',
+    _id: "1d5s2",
     company: "inMange ",
     position: "Frontend developer",
     status: "rejected",
     description: "comapany of projects",
     importance: 2,
     createdAt: Date.now(),
-    interviews: [
-      "hr interview",
-      "mission in company",
-    ],
+    interviews: ["hr interview", "mission in company"],
   },
   {
-    _id:'s5a6a',
+    _id: "s5a6a",
     company: "Dateflow ",
     position: "Frontend developer",
     status: "applied",
@@ -33,27 +32,25 @@ const Jobs = [
     interviews: [],
   },
   {
-    _id:'25s6s',
+    _id: "25s6s",
     company: "slash ",
     position: "Frontend developer",
     status: "rejected",
     description: "comapany of projects",
     importance: 1,
     createdAt: Date.now(),
-    interviews: [ "hr interview",
-    "mission in company",],
+    interviews: ["hr interview", "mission in company"],
   },
 ];
 
-// storageService.postMany(STORAGE_KEY, Jobs )
 
 async function query(filterValue) {
   try {
     // const tasks = await axios.get(TASK_URL, { params: filterValue })
     const tasks = await storageService.query(STORAGE_KEY);
-    if(!tasks.length){
-      const jobs = await storageService.postMany(STORAGE_KEY, Jobs )
-      return jobs
+    if (!tasks.length) {
+      const jobs = await storageService.postMany(STORAGE_KEY, Jobs);
+      return jobs;
     }
     return tasks;
   } catch (error) {
@@ -61,46 +58,54 @@ async function query(filterValue) {
   }
 }
 
-async function getById(id) {
+async function getJobById(jobs, id) {
   try {
-    // return await axios.get(TASK_URL + id).then((res) => res.data)
-    return await storageService.get(STORAGE_KEY, id);
+    return jobs.find((job) => job._id === id);
   } catch (error) {
     throw new Error("error on getById FE", error);
   }
 }
 
-async function remove(id) {
+async function remove(user, id) {
   try {
-    // return await axios.delete(`${TASK_URL}${id}/`)
-    return await storageService.remove(STORAGE_KEY, id);
+    const idx = user.jobs.findIndex((entity) => entity._id === id);
+    if (idx === -1)
+      return Promise.reject(`Unknown Entity ${user.username} with Id: ${id}`);
+    user.jobs.splice(idx, 1);
+    return await userService.update(user);
   } catch (error) {
     throw new Error("error on remove Fe", error);
   }
 }
 
-async function save(job) {
+async function save(user, job) {
   try {
-    if (job.id) {
-      // return await axios.put(`${TASK_URL}`, task)
-      return await storageService.put(STORAGE_KEY, job);
+    if(job._id) {
+      const idx = user.jobs.findIndex(
+        (j) => j._id === job._id
+      );
+      user.jobs.splice(idx, 1, job);
+      return await userService.update(user);
     }
-    // const addedTask = await axios.post(`${TASK_URL}`, { ...task })
-    const addedJob = await storageService.post(STORAGE_KEY, job);
-    return addedJob;
+    else{
+      job._id = await utilService.makeId()
+      user.jobs.push(job)
+      return await userService.update(user);
+    }
   } catch (error) {
     throw new Error("error on save Job", error);
   }
 }
 
+
 function getEmptyJob() {
   return {
-    id:null,
+    _id: null,
     company: "",
     position: "",
     status: "applied",
     description: "",
-    importance:0,
+    importance: 0,
     createdAt: Date.now(),
     interviews: [],
   };

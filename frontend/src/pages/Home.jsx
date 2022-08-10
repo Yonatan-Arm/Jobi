@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import JobList from "../components/JobList";
 import { jobService } from "../services/jobService";
 import fileAddLogo from '../assets/imgs/file-add.svg'
 import JobModal from "../components/JobModal";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { removeJob, setJobs } from "../store/actions/jobActions";
 
 export default function Home() {
   const [jobsToDisplay, setjobsToDisplay] = useState(null);
   const [jobToDisplay, setjobToDisplay] = useState(null);
   const [isJobSelceted, setisJobSelceted] = useState(null);
+  const { user } = useSelector(({ userModule }) => userModule);
   const { jobs } = useSelector(({ jobModule }) => jobModule);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
 
   useEffect(() => {
+    if(!user) navigate('login')
+    if(jobs.length < 1 ){
+     jobs = dispatch(setJobs(user.jobs))
+    } 
       setjobsToDisplay(jobs);
     return () => {
       setjobsToDisplay(null);
@@ -22,13 +31,13 @@ export default function Home() {
   
   const onRemoveJob = async (id,ev) => {
     ev.stopPropagation()
-    const jobs = await jobService.remove(id);
+    const jobs = await dispatch(removeJob(JSON.parse(JSON.stringify((id))),JSON.parse(JSON.stringify(user))))
     setjobsToDisplay(jobs);
     if(isJobSelceted) setisJobSelceted(false)
   };
 
   const onSelectJob = async (id) => {
-    const job = await jobService.getById(id);
+    const job = await jobService.getJobById(jobs,id);
     setjobToDisplay(job)
     setisJobSelceted(true)
   };
