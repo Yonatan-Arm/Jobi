@@ -12,6 +12,17 @@ export default function Login() {
   const [warning, setWarning] = useState(false);
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    loadUser();
+  }, []);
+
+
+  const loadUser = async () => {
+    const user = await userService.getEmptyUser();
+    setUser(user);
+  };
+
+
   const login = async (ev) => {
     ev.preventDefault();
     try {
@@ -32,15 +43,9 @@ export default function Login() {
   }
 
 
-  useEffect(() => {
-    loadUser();
-  }, []);
 
-  const loadUser = async () => {
-    const user = await userService.getEmptyUser();
-    setUser(user);
-  };
 
+ 
 
   if (!user) return <span> loading..</span>;
   return (

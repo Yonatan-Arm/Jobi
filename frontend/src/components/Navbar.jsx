@@ -32,7 +32,7 @@ export default function Navbar() {
         </div>
         <div className="links flex">
           <Link to="about">about</Link>
-          <Link to="">home</Link>
+          <Link to="">Jobs</Link>
           {user ? (
             <span onClick={onLogOut} className="clickable">
               {" "}
@@ -57,7 +57,7 @@ export default function Navbar() {
           {isOpenModel && (
             <div className="flex column mobile-model align-center">
               <Link to="about">about</Link>
-              <Link to="">home</Link>
+              <Link to="">Jobs</Link>
               {user ? (
             <span onClick={onLogOut} className="clickable">
               {" "}

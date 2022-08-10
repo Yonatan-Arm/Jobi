@@ -18,7 +18,7 @@ export default function Home() {
 
 
   useEffect(() => {
-    if(!user) navigate('login')
+    if(!user) return navigate('login')
     if(jobs.length < 1 ){
      jobs = dispatch(setJobs(user.jobs))
     } 
