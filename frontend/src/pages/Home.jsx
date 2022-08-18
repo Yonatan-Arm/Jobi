@@ -8,7 +8,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { removeJob, setJobs } from "../store/actions/jobActions";
 
 export default function Home() {
-  const [jobsToDisplay, setjobsToDisplay] = useState(null);
+  const [jobsToDisplay, setjobsToDisplay] = useState([]);
   const [jobToDisplay, setjobToDisplay] = useState(null);
   const [isJobSelceted, setisJobSelceted] = useState(null);
   const { user } = useSelector(({ userModule }) => userModule);
@@ -19,12 +19,12 @@ export default function Home() {
 
   useEffect(() => {
     if(!user) return navigate('login')
-    if(jobs.length < 1 ){
+    if(jobs.length < 1 && user.jobs.length > 0 ){
      jobs = dispatch(setJobs(user.jobs))
     } 
       setjobsToDisplay(jobs);
     return () => {
-      setjobsToDisplay(null);
+      setjobsToDisplay([]);
     };
   }, []);
 
@@ -45,15 +45,16 @@ export default function Home() {
   const UnSelcetJob =  () => {
     setisJobSelceted(false)
   };
-
+ 
 
   return (
     <div className="home">
       <h2> Jobi -search your new job</h2>
       <Link className="add-btn"  to="edit"><img src={fileAddLogo} alt='add-logo' /> </Link>
-      {jobsToDisplay && (
-          <JobList jobs={jobsToDisplay} onRemoveJob={onRemoveJob} onSelectJob={onSelectJob} />
-      )}
+      {jobsToDisplay.length > 0
+       ? <JobList jobs={jobsToDisplay} onRemoveJob={onRemoveJob} onSelectJob={onSelectJob} />
+       : <div className="mesaage"> There are no jobs yet..</div>
+       }
       {isJobSelceted && (
         <JobModal job={jobToDisplay} UnSelcetJob={UnSelcetJob} onRemoveJob={onRemoveJob} />
    

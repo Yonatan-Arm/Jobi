@@ -3,7 +3,7 @@
     margin-top: 20px;
     margin: 0 auto;
     width: 60%;
-    min-height: 85vh;
+    min-height: 70vh;
     text-align: center;
     box-shadow:
         rgba(22, 31, 39, 0.42) 0px 60px 123px -25px,
@@ -15,7 +15,10 @@
     background-color: aliceblue;
     gap: 10px;
     font-weight: 700;
-      @include for-tablet-layout {
+      @include for-wide-layout {
+        width: 80%;
+      }
+      @include for-mini-layout {
         width: 100%;
       }
     p{
@@ -23,20 +26,26 @@
         width: 50%;
     }
     .profile-pic{
-            width: 350px;
+            width: 300px;
             border-radius: 50%;
             object-fit: fill;
+            margin-top: 15px;
+            margin-bottom: 15px;
             box-shadow:
             rgba(22, 31, 39, 0.42) 0px 60px 123px -25px,
             rgba(19, 26, 32, 0.08) 0px 35px 75px -35px;
-            height: 350px;
+            height: 300px;
             @include for-wide-layout {
                 width: 50%;
-                height: 300px;
+                height: 280px;
               }
             @include for-mobile-layout {
                 width: 70%;
                 height: 250px;
+              }
+            @include for-mini-layout {
+                width: 70%;
+                height: 200px;
               }
     }
     .sociel-links{

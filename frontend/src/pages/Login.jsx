@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { userService } from "../services/user.service.js";
 import { useForm } from "../hooks/useForm";
 import { useDispatch } from "react-redux";
-import { onLogin } from '../store/actions/userActions.js'
-// import Loader from '../components/Loader'
+import { onLogin, onSignup } from '../store/actions/userActions.js'
+
 
 export default function Login() {
   const [user, handleChange, setUser] = useForm(null);
@@ -34,6 +34,7 @@ export default function Login() {
             }, 3000);
             return;
       } 
+
      const userLogin = await dispatch(onLogin((JSON.parse(JSON.stringify(user)))))
      if(!userLogin) return
      else navigate('/')
@@ -42,6 +43,11 @@ export default function Login() {
     }
   }
 
+  const loginGuset = async () => {
+    let guset = await userService.getGusetUser()
+    await dispatch(onSignup(JSON.parse(JSON.stringify(guset))))
+    navigate("/")
+  }
 
 
 
@@ -50,32 +56,31 @@ export default function Login() {
   if (!user) return <span> loading..</span>;
   return (
     <section className="login-page">
-      <h3 className="text-center">Login</h3>
-      <form onSubmit={login} className="flex column">
-        <div className="flex column">
-          <label htmlFor="username">username:</label>
+      <span className="login-pic flex align-center justify-center" > <h3 className="text-center">Login</h3></span>
+      
+      <form onSubmit={login} className="flex column align-center">
           <input
             onChange={handleChange}
             value={user.username}
             type="text"
             name="username"
             id="username"
+            placeholder="username"
           />
-        </div>
-        <div className="flex column">
-          <label htmlFor="password">password</label>
           <input
             onChange={handleChange}
             value={user.password}
-            type="password"
+            type="text"
             name="password"
             id="password"
+            placeholder="password"
           />
-        </div>
         <button>Login</button>
       </form>
+      <span className="text-center"> OR</span>
+      <button onClick={loginGuset} className="guset-login">Login as Guset</button>
       {warning && (
-        <span className="warning"> Invalid username or password</span>
+        <span className="warning text-center"> Invalid username or password</span>
       )}
     </section>
   );

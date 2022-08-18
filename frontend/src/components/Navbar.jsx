@@ -22,11 +22,15 @@ export default function Navbar() {
     navigate("login");
   };
 
+  const navigateJobs = async () => {
+    navigate("");
+  };
+
   return (
     <div className="navbar">
       <div className="nav flex space-between justify-center align-center">
         <div className="logo">
-          <h3 className=" flex justify-center align-center">
+          <h3 className=" flex justify-center align-center clickable" onClick={navigateJobs}>
             <img src={search} alt="search" /> Jobi{" "}
           </h3>
         </div>

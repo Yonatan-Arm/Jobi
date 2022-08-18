@@ -9,6 +9,7 @@ export const userService = {
   getEmptyUser,
   update,
   add,
+  getGusetUser,
 };
 
 const LOGGEDIN_KEY = "LoggedInUser";
@@ -70,7 +71,7 @@ function getEmptyUser() {
         _id: "1d5s2",
         company: "Meta ",
         position: "Frontend developer",
-        status: "rejected",
+        status: "applied",
         description: "comapany of projects",
         importance: 2,
         createdAt: Date.now(),
@@ -90,7 +91,46 @@ function getEmptyUser() {
         _id: "25s6s",
         company: "Google ",
         position: "Frontend developer",
-        status: "rejected",
+        status: "interviews",
+        description: "comapany of websites",
+        importance: 1,
+        createdAt: Date.now(),
+        interviews: ["hr interview", "mission in company"],
+      },
+    ],
+  };
+}
+function getGusetUser() {
+  return {
+    _id: null,
+    username: "guset" + utilService.makeId(3) ,
+    password: utilService.makeId(3),
+    jobs: [
+      {
+        _id: "1d5s2",
+        company: "Meta ",
+        position: "Frontend developer",
+        status: "applied",
+        description: "comapany of projects",
+        importance: 2,
+        createdAt: Date.now(),
+        interviews: ["hr interview", "mission in company"],
+      },
+      {
+        _id: "s5a6a",
+        company: "Microsoft ",
+        position: "Fullstack developer",
+        status: "applied",
+        description: "comapany of projects",
+        importance: 4,
+        createdAt: Date.now(),
+        interviews: [],
+      },
+      {
+        _id: "25s6s",
+        company: "Google ",
+        position: "Frontend developer",
+        status: "interviews",
         description: "comapany of websites",
         importance: 1,
         createdAt: Date.now(),
