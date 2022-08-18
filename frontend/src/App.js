@@ -19,11 +19,12 @@ function App() {
           <Route path="edit" element={<JobEdit />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="/" element={<Login />} />
         </Routes>
       </div>
     </Router>
   );
-  
+
 }
 
 export default App;
