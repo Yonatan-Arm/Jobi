@@ -37,7 +37,7 @@ export default function Login() {
 
      const userLogin = await dispatch(onLogin((JSON.parse(JSON.stringify(user)))))
      if(!userLogin) return
-     else navigate('/')
+     else navigate('jobs')
     } catch (err) {
       setWarning(true);
     }
@@ -46,7 +46,7 @@ export default function Login() {
   const loginGuset = async () => {
     let guset = await userService.getGusetUser()
     await dispatch(onSignup(JSON.parse(JSON.stringify(guset))))
-    navigate("/")
+    navigate("jobs")
   }
 
 

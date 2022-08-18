@@ -25,7 +25,7 @@ export default function Signup() {
     ev.preventDefault();
     if (!user.name && !user.password) return;
     await dispatch(onSignup(JSON.parse(JSON.stringify(user))))
-    navigate("/")
+    navigate("jobs")
   };
 
   if (!user) return <span> loading..</span>;

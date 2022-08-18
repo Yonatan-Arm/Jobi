@@ -14,9 +14,9 @@ export default function About() {
       </p>
       <img src={profilePic} alt="profile-Pic"  className="profile-pic"/>
       <div className="flex row sociel-links">
-        <a href="https://www.linkedin.com/in/yonatan-arm-b2a3b0238/"  target="_blank">
+        <a href="https://www.linkedin.com/in/yonatan-arm-b2a3b0238/" rel="noreferrer"  target="_blank">
           <img src={linkdinLogo} alt="linkdin-logo" /> Linkdin</a>
-        <a href="https://github.com/Yonatan-Arm" target="_blank">
+        <a href="https://github.com/Yonatan-Arm" rel="noreferrer" target="_blank jobs" >
         <img src={githubLogo} alt="github-logo" />Github</a>
       </div>
     </div>

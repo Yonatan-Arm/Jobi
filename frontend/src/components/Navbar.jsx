@@ -23,7 +23,7 @@ export default function Navbar() {
   };
 
   const navigateJobs = async () => {
-    navigate("");
+    navigate("jobs");
   };
 
   return (
@@ -36,7 +36,7 @@ export default function Navbar() {
         </div>
         <div className="links flex">
           <Link to="about">about</Link>
-          <Link to="">Jobs</Link>
+          <Link to="jobs">Jobs</Link>
           {user ? (
             <span onClick={onLogOut} className="clickable">
               {" "}
@@ -61,7 +61,7 @@ export default function Navbar() {
           {isOpenModel && (
             <div className="flex column mobile-model align-center">
               <Link to="about">about</Link>
-              <Link to="">Jobs</Link>
+              <Link to="jobs">Jobs</Link>
               {user ? (
             <span onClick={onLogOut} className="clickable">
               {" "}
