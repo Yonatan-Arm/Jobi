@@ -37,7 +37,7 @@ export default function Login() {
 
      const userLogin = await dispatch(onLogin((JSON.parse(JSON.stringify(user)))))
      if(!userLogin) return
-     else navigate('jobs')
+     else navigate("jobs")
     } catch (err) {
       setWarning(true);
     }

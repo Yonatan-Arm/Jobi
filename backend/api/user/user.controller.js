@@ -2,7 +2,7 @@ const userService = require("./user.service.js");
 const logger = require("../../services/logger.service");
 const { signup } = require("../auth/auth.service.js");
 const bcrypt = require('bcrypt')
-const socketService = require('../../services/socket.service.js')
+
 
 
 // GET LIST
