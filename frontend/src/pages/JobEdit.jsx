@@ -53,17 +53,17 @@ export default function JobEdit() {
   };
 
   const renderImportance = () => {
-    switch (job.importance) {
-      case "0":
-        return "#acb8c6";
-      case "1":
-        return "#4d99e9";
-      case "2":
-        return "#ab9745";
-      case "3":
-        return "#ff2525";
+    switch(job.importance) {
+      case '0':
+        return '#c4e8c2';
+        case '1':
+          return '#46a094';
+      case '2':
+        return '#326789';
+      case '3':
+        return '#ec1818';
       default:
-        return "grey";
+        return '#4d38388c';
     }
   };
 

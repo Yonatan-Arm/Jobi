@@ -35,7 +35,7 @@ export default function Navbar() {
           </h3>
         </div>
         <div className="links flex">
-          <Link to="/about">about</Link>
+          <Link to="/about">About</Link>
           <Link to="/jobs">Jobs</Link>
           {user ? (
             <span onClick={onLogOut} className="clickable">
@@ -44,7 +44,7 @@ export default function Navbar() {
             </span>
           ) : (
             <div>
-             <span> <Link to="/signup">signup</Link>  </span>
+             <span> <Link to="/signup">Signup</Link>  </span>
              <span> <Link to="/login">Login</Link>  </span>
             </div>
           )}
@@ -59,8 +59,8 @@ export default function Navbar() {
             }}
           />
           {isOpenModel && (
-            <div className="flex column mobile-model align-center">
-              <Link to="/about">about</Link>
+            <div className="flex column mobile-model align-center justify-center">
+              <Link to="/about">About</Link>
               <Link to="/jobs">Jobs</Link>
               {user ? (
             <span onClick={onLogOut} className="clickable">
@@ -68,8 +68,8 @@ export default function Navbar() {
               logout
             </span>
           ) : (
-            <div className="flex column">
-             <span> <Link to="/signup">signup</Link>  </span>
+            <div className="flex column gap">
+             <span> <Link to="/signup">Signup</Link>  </span>
              <span> <Link to="/login">Login</Link>  </span>
             </div>
           )}

@@ -34,32 +34,34 @@
         gap: 10px;
 
         button {
-            position: absolute;
-            right: 15px;
-            bottom: 13px;
+            margin-top: 8px;
             border-radius: 4px;
-            background-color: #d1d5de;
+            background-color: #8c94a5;
             border: none;
-            font-size: 13px;
+            font-size: rem(16px);
             font-family: system-ui;
             font-weight: 620;
-            padding: 5px;
+            padding: 7px;
         }
 
         select[name="importance"] {
             width: 50px;
         }
+
         .multi-select {
             width: rem(250px);
         }
-        .panel-content{
+
+        .panel-content {
             width: 250px;
-            .select-item{
+
+            .select-item {
                 height: 60px;
                 display: flex;
                 align-items: center;
-                .item-renderer input{
-                    width: 15px;                   
+
+                .item-renderer input {
+                    width: 15px;
                 }
             }
         }
@@ -102,6 +104,11 @@
 
     h2 {
         text-align: center;
+    }
+
+    .rmsc .clear-selected-button {
+        margin-right: 5px;
+
     }
 
 }

@@ -7,15 +7,15 @@ export default function JobCard({ job, onRemoveJob, onSelectJob  }) {
    const renderImportance = () => {
     switch(job.importance) {
       case '0':
-        return '#acb8c6';
+        return '#c4e8c2';
         case '1':
-          return '#4d99e9';
+          return '#46a094';
       case '2':
-        return '#ab9745';
+        return '#326789';
       case '3':
-        return '#ff2525';
+        return '#ec1818';
       default:
-        return 'grey';
+        return '#4d38388c';
     }
   }
    const renderStatus = () => {

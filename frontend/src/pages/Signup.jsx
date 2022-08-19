@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "../hooks/useForm";
 import { userService } from "../services/user.service.js";
 import {  onSignup } from '../store/actions/userActions.js';
@@ -27,6 +27,12 @@ export default function Signup() {
     await dispatch(onSignup(JSON.parse(JSON.stringify(user))))
     navigate("/jobs")
   };
+  const loginGuset = async () => {
+    let guset = await userService.getGusetUser()
+    await dispatch(onSignup(JSON.parse(JSON.stringify(guset))))
+    navigate("/jobs")
+  }
+
 
   if (!user) return <span> loading..</span>;
   return (
@@ -51,6 +57,9 @@ export default function Signup() {
           />
         <button>Signup</button>
       </form>
+      <span className="text-center"> OR</span>
+      <button onClick={loginGuset} className="guset-login">Login as Guset</button>
+      <Link to="/login" className="text-center link">Login</Link>
     </div>
   );
 }

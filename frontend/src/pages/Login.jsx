@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { userService } from "../services/user.service.js";
 import { useForm } from "../hooks/useForm";
 import { useDispatch } from "react-redux";
@@ -79,6 +79,7 @@ export default function Login() {
       </form>
       <span className="text-center"> OR</span>
       <button onClick={loginGuset} className="guset-login">Login as Guset</button>
+      <Link to="/signup" className="text-center link">Signup</Link>
       {warning && (
         <span className="warning text-center"> Invalid username or password</span>
       )}

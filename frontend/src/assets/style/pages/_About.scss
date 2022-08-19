@@ -18,6 +18,9 @@
       @include for-wide-layout {
         width: 80%;
       }
+      @include for-tablet-layout {
+        width: 90%;
+      }
       @include for-mini-layout {
         width: 100%;
       }
@@ -26,7 +29,7 @@
         width: 50%;
     }
     .profile-pic{
-            width: 300px;
+            width: 250px;
             border-radius: 50%;
             object-fit: fill;
             margin-top: 15px;
@@ -36,15 +39,13 @@
             rgba(19, 26, 32, 0.08) 0px 35px 75px -35px;
             height: 300px;
             @include for-wide-layout {
-                width: 50%;
                 height: 280px;
               }
             @include for-mobile-layout {
-                width: 70%;
+                width: 55%;
                 height: 250px;
               }
             @include for-mini-layout {
-                width: 70%;
                 height: 200px;
               }
     }

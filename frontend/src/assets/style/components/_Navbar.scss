@@ -1,57 +1,102 @@
-
 .navbar {
-    margin-bottom: rem(10px);
-    @include for-mobile-layout {
-      padding: 20px
-    }
-    h3{
-      font-weight: 600;
-        img{
-            margin-right: 4px;
-            width: 20px;
-            height: 20px;
-        }
-    }
-    .links{
-        gap: 10px;
-        @include for-mobile-layout {
-            display: none;
-          }
+  margin-bottom: rem(10px);
+  font-weight: 600 ;
+  font-size: rem(18px);
 
-    }
-
-  
-    .mobile-nav {
-      display: none;
-  
-      @include for-mobile-layout {
-        display: flex;
-      }
-      img{
-        width: 25px;
-        height: 25px;
-        cursor: pointer;
-      }
-      .mobile-model{
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        width: 250px;
-        height: 200px;
-        background-color: azure;
-        gap: 15px;
-        position: fixed;
-        padding: 15px;
-        z-index: 100;
-        button{
-            right: 2px;
-            top: 2px;
-            position: absolute;
-        }
-      }
-  
-  
-    }
-  
+  @include for-mobile-layout {
+    padding: 20px
   }
-  
+
+  h3 {
+    font-weight: 600;
+
+    img {
+      margin-right: 4px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .links {
+    gap: 10px;
+
+    a {
+      text-decoration: none;
+    }
+    a:hover{
+      border-bottom: 3px solid $clr4;
+    }
+    span:hover{
+      border-bottom: 3px solid $clr4;
+    }
+
+    @include for-mobile-layout {
+      display: none;
+    }
+
+  }
+
+
+  .mobile-nav {
+    display: none;
+
+    @include for-mobile-layout {
+      display: flex;
+    }
+
+    img {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+    }
+
+    .mobile-model {
+      width: 100vw;
+      height: 100vh;
+      left: 0;
+      bottom: 0;
+      position: fixed;
+      background-color: $clr7;
+      color: #fff;
+      gap: 25px;
+      padding: 50px;
+      z-index: 100;
+      font-weight: 600 ;
+
+      button {
+        right: 35px;
+        top: 35px;
+        position: absolute;
+        background: none;
+        border: none;
+        font-size: 40px;
+        color: #fff;
+        font-weight: 600 ;
+      }
+
+
+      a {
+        text-decoration: none;
+        font-size: rem(30px);
+      }
+      a:hover{
+        border-bottom: 4px solid $clr8;
+      }
+      
+      span {
+        font-size: rem(30px);
+      }
+      span:hover{
+        border-bottom: 4px solid $clr8;
+      }
+
+      .gap {
+        gap: 25px;
+
+      }
+    }
+
+
+  }
+
+}
