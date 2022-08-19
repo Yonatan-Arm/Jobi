@@ -49,7 +49,7 @@ export default function JobEdit() {
     }
     job.interviews = [...interviews];
   await dispatch(addJob({ ...job }, user))
-    navigate("jobs");
+    navigate("/jobs");
   };
 
   const renderImportance = () => {
@@ -76,7 +76,7 @@ export default function JobEdit() {
         src={backBtn}
         alt="back"
         className="back-btn"
-        onClick={() => navigate("jobs")}
+        onClick={() => navigate("/jobs")}
         title="back"
       />
       <form onSubmit={onSaveJob} className="flex column">

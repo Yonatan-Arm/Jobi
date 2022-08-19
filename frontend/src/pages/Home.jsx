@@ -18,7 +18,7 @@ export default function Home() {
 
 
   useEffect(() => {
-    if(!user) return navigate('login')
+    if(!user) return navigate('/login')
     if(jobs.length < 1 && user.jobs.length > 0 ){
      jobs = dispatch(setJobs(user.jobs))
     } 
@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <div className="home">
       <h2> Jobi -search your new job</h2>
-      <Link className="add-btn"  to="edit"><img src={fileAddLogo} alt='add-logo' /> </Link>
+      <Link className="add-btn"  to="/edit"><img src={fileAddLogo} alt='add-logo' /> </Link>
       {jobsToDisplay.length > 0
        ? <JobList jobs={jobsToDisplay} onRemoveJob={onRemoveJob} onSelectJob={onSelectJob} />
        : <div className="mesaage"> There are no jobs yet..</div>

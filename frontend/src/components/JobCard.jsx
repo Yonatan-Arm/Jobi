@@ -36,7 +36,7 @@ export default function JobCard({ job, onRemoveJob, onSelectJob  }) {
       <div className="actions flex  justify-center row">
       <span style={{background : renderImportance()}} className="importance"></span>
       <img src={trash} alt="trash" title="trash" onClick={(ev)=>onRemoveJob(job._id,ev)} />
-      <Link to={`edit/${job._id}`}>  <img src={edit} alt="edit" title="edit"/></Link>
+      <Link to={`/edit/${job._id}`}>  <img src={edit} alt="edit" title="edit"/></Link>
       </div>
       <span> {job.company}</span>
       <span>position: {job.position}</span>

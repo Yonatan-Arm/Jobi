@@ -28,7 +28,7 @@ export default function JobModal({ job, onRemoveJob, UnSelcetJob }) {
             title="trash"
             onClick={(ev) => onRemoveJob(job._id, ev)}
           />
-          <Link to={`edit/${job._id}`}>
+          <Link to={`/edit/${job._id}`}>
             {" "}
             <img src={edit} alt="edit" title="edit" />
           </Link>

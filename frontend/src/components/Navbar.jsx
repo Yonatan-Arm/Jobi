@@ -19,11 +19,11 @@ export default function Navbar() {
 
   const onLogOut = async () => {
      dispatch(onLogout())
-    navigate("login");
+    navigate("/login");
   };
 
   const navigateJobs = async () => {
-    navigate("jobs");
+    navigate("/jobs");
   };
 
   return (
@@ -35,8 +35,8 @@ export default function Navbar() {
           </h3>
         </div>
         <div className="links flex">
-          <Link to="about">about</Link>
-          <Link to="jobs">Jobs</Link>
+          <Link to="/about">about</Link>
+          <Link to="/jobs">Jobs</Link>
           {user ? (
             <span onClick={onLogOut} className="clickable">
               {" "}
@@ -44,8 +44,8 @@ export default function Navbar() {
             </span>
           ) : (
             <div>
-             <span> <Link to="signup">signup</Link>  </span>
-             <span> <Link to="login">Login</Link>  </span>
+             <span> <Link to="/signup">signup</Link>  </span>
+             <span> <Link to="/login">Login</Link>  </span>
             </div>
           )}
         </div>
@@ -60,8 +60,8 @@ export default function Navbar() {
           />
           {isOpenModel && (
             <div className="flex column mobile-model align-center">
-              <Link to="about">about</Link>
-              <Link to="jobs">Jobs</Link>
+              <Link to="/about">about</Link>
+              <Link to="/jobs">Jobs</Link>
               {user ? (
             <span onClick={onLogOut} className="clickable">
               {" "}
@@ -69,8 +69,8 @@ export default function Navbar() {
             </span>
           ) : (
             <div className="flex column">
-             <span> <Link to="signup">signup</Link>  </span>
-             <span> <Link to="login">Login</Link>  </span>
+             <span> <Link to="/signup">signup</Link>  </span>
+             <span> <Link to="/login">Login</Link>  </span>
             </div>
           )}
               <button
