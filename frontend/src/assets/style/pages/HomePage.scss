@@ -54,4 +54,23 @@
     font-weight: 700;
     font-size: 18px;
   }
+  .select-buttons{
+    gap: 10px;
+    margin: 5px 10px;
+    padding: 10px;
+    button{
+      border-radius: 8px;
+      padding: 5px;
+      font-family: system-ui;
+      background-color: $clr10;
+      color: #fff;
+      font-weight: 600;
+
+    }
+  }
+  .count-jobs{
+    font-weight: 600;
+    margin-left: rem(25px);
+    margin-top: 8px;
+  }
 }

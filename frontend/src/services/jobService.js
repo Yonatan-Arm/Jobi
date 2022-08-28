@@ -105,7 +105,7 @@ function getEmptyJob() {
     position: "",
     status: "applied",
     description: "",
-    importance: 0,
+    importance: '0',
     createdAt: Date.now(),
     interviews: [],
   };

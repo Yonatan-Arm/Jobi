@@ -45,12 +45,43 @@ export default function Home() {
   const UnSelcetJob =  () => {
     setisJobSelceted(false)
   };
+
+  const onShowByStatus = (status) =>{
+    let sortJobs
+    switch (status) {
+      case 'All':
+        setjobsToDisplay(jobs)
+        break;
+      case 'Applied':
+        sortJobs = jobs.filter(job => job.status === 'applied')
+        setjobsToDisplay(sortJobs)
+        break;
+        case 'Interviews':
+          sortJobs= jobs.filter(job => job.status === 'interviews')
+          setjobsToDisplay(sortJobs)
+          break;
+          case 'Rejected':
+            sortJobs = jobs.filter(job => job.status === 'rejected')
+            setjobsToDisplay(sortJobs)
+        break;
+      default:
+        break;
+    }
+
+  }
  
 
   return (
     <div className="home">
       <h2> Jobi -search your new job</h2>
       <Link className="add-btn"  to="/edit"><img src={fileAddLogo} alt='add-logo' /> </Link>
+      <div className="flex justify-center select-buttons">
+         <button onClick={()=>onShowByStatus('All')}>All</button>
+         <button onClick={()=>onShowByStatus('Applied')}>Applied</button>
+         <button onClick={()=>onShowByStatus('Interviews')}>Interviews</button>
+         <button onClick={()=>onShowByStatus('Rejected')}>Rejected</button>
+      </div>
+      <span className="count-jobs">{jobsToDisplay.length} jobs</span>
       {jobsToDisplay.length > 0
        ? <JobList jobs={jobsToDisplay} onRemoveJob={onRemoveJob} onSelectJob={onSelectJob} />
        : <div className="mesaage"> There are no jobs yet..</div>

@@ -9,9 +9,10 @@ export default function About() {
       <h3>Hi I'm Yonatan Arm</h3>
       <span>I'm Fullstack developer </span>
       <p>
-        I started this project to meet my need to organize the places I looked
-        for work so I could manage them efficiently to find my first job
+      I've opened this page since I had the need to keep my job hunt stuatus and my workflow progress monitored in order to be more efficient. 
+      I believe that the key to success is to be well organized and prepared for every challenge ✌
       </p>
+      
       <img src={profilePic} alt="profile-Pic"  className="profile-pic"/>
       <div className="flex row sociel-links">
         <a href="https://www.linkedin.com/in/yonatan-arm-b2a3b0238/" rel="noreferrer"  target="_blank">
