@@ -6,11 +6,12 @@ import profilePic from '../assets/imgs/profile-pic.jpeg'
 export default function About() {
   return (
     <div className="about flex column align-center">
-      <h3>Hi I'm Yonatan Arm</h3>
-      <span>I'm Fullstack developer </span>
+      <h3>Hello, my name is Yonatan Arm </h3> 
+      <span> I am a Fullstack developer</span> 
       <p>
-      I've opened this page since I had the need to keep my job hunt stuatus and my workflow progress monitored in order to be more efficient. 
-      I believe that the key to success is to be well organized and prepared for every challenge ✌
+      I created this page to help me manage my job hunt status and track my workflow progress. 
+      I strongly believe that being well-organized and prepared is the key to success,
+      especially when facing challenges. Thank you for visiting my page!"
       </p>
       
       <img src={profilePic} alt="profile-Pic"  className="profile-pic"/>
@@ -23,3 +24,9 @@ export default function About() {
     </div>
   );
 }
+
+
+// A MERN Stack-based web application created to
+// effectively manage and monitor my job search
+// progress, ensuring a well-organized and efficient
+// job hunting experience.

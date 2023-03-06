@@ -70,7 +70,7 @@ export default function Login() {
           <input
             onChange={handleChange}
             value={user.password}
-            type="text"
+            type="password"
             name="password"
             id="password"
             placeholder="password"

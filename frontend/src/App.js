@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="about" element={<About />} />
+          <Route path="dashboard" element={<Dashboard />} />
           <Route path="jobs" element={<Home />} />
           <Route path="edit/:id" element={<JobEdit />} />
           <Route path="edit" element={<JobEdit />} />

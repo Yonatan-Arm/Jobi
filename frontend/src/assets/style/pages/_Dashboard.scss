@@ -1,0 +1,32 @@
+.dashboard{
+    padding: 20px 40px ;
+    .container{
+        gap: 20px;
+        .card{
+            width: 30%;
+            min-width: 250px;
+            height: 200px;
+            background-color: #fff;
+            font-weight: 550;
+            font-size: 20px;
+            border-radius: 2px;
+            box-shadow: 2px 14px 15px -7px rgba(30, 166, 250, 0.36);
+            background: #e6e9ff;
+            gap: 10px;
+            .MuiTypography-caption{
+                font-size: 16px
+            }
+        
+
+        }
+    }
+    .charts{
+        margin: 20px auto;
+        height: 400px;
+        background: #e6e9ff;
+        width: 80vw;
+        max-width: 700px;
+
+    }
+
+}

@@ -37,6 +37,7 @@ export default function Navbar() {
         <div className="links flex">
           <Link to="/about">About</Link>
           <Link to="/jobs">Jobs</Link>
+          <Link to="/dashboard">Dashboard</Link>
           {user ? (
             <span onClick={onLogOut} className="clickable">
               {" "}
