@@ -5,4 +5,4 @@ client-side: React.js, scss.
 <br>
 server-side: Node.js + Express, MongoDB.
 
-<a href="https://jobi-6bv6.onrender.com"> Jobi App </a>
+<a href="https://jobi-49h2.onrender.com"> Jobi App </a>
