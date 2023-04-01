@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Typography from "@material-ui/core/Typography";
+import { useNavigate } from "react-router-dom";
+
 import Box from "@material-ui/core/Box";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
@@ -35,6 +37,7 @@ function CircularProgressWithLabel(props) {
 
 export default function Dashboard() {
   const { user } = useSelector(({ userModule }) => userModule);
+  console.log(user);
   const jobs = user.jobs;
   const appliedjobs = jobs.filter((job) => job.status === "applied");
   const rejectedjobs = jobs.filter((job) => job.status === "rejected");
@@ -44,23 +47,20 @@ export default function Dashboard() {
     labels: ["appliedjobs", "rejectedjobs", "interviewsjobs"],
     datasets: [
       {
-        data: [(appliedjobs.length / jobs.length) * 100, (rejectedjobs.length / jobs.length) * 100, (interviewsjobs.length / jobs.length) * 100],
-        backgroundColor: [
-          "#07ca07",
-          "red",
-          "blue",
+        data: [
+          (appliedjobs.length / jobs.length) * 100,
+          (rejectedjobs.length / jobs.length) * 100,
+          (interviewsjobs.length / jobs.length) * 100,
         ],
-        borderColor: [
-          "#07ca07",
-          "red",
-          "blue",
-        ],
+        backgroundColor: ["#07ca07", "red", "blue"],
+        borderColor: ["#07ca07", "red", "blue"],
         borderWidth: 1,
       },
     ],
   };
   return (
     <section className="dashboard">
+      <h1>Hello {user.username}</h1>
       <div className="container flex row wrap">
         <div className="card flex align-center justify-center column">
           <span>Total jobs: </span>
@@ -91,7 +91,7 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="charts flex align-center justify-center ">
-      <Doughnut data={data} />
+        <Doughnut data={data} />
       </div>
     </section>
   );
