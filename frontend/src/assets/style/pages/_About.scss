@@ -31,23 +31,18 @@
     .profile-pic{
             width: 250px;
             border-radius: 50%;
-            object-fit: fill;
+            object-fit: cover;
             margin-top: 15px;
             margin-bottom: 15px;
             box-shadow:
             rgba(22, 31, 39, 0.42) 0px 60px 123px -25px,
             rgba(19, 26, 32, 0.08) 0px 35px 75px -35px;
-            height: 300px;
-            @include for-wide-layout {
-                height: 280px;
-              }
+            height: 250px;
             @include for-mobile-layout {
-                width: 55%;
-                height: 250px;
-              }
-            @include for-mini-layout {
+                width: 200px;
                 height: 200px;
               }
+
     }
     .sociel-links{
         margin-top: rem(30px);

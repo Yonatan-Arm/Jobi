@@ -81,7 +81,7 @@ export default function Home() {
 
   return (
     <div className="home">
-      <h2> Jobi -search your new job</h2>
+      <h2> Jobi -Manage Your Job Hunt</h2>
       <Link className="add-btn" to="/edit">
         <img src={fileAddLogo} alt="add-logo" />{" "}
       </Link>

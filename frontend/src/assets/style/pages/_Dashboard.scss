@@ -1,34 +1,53 @@
 .dashboard{
-    background-color: #f1f1f1f1;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #88b0cdbf;
+    padding: 20px;
+    color: #fff;
+    max-width: 1300px;
+    margin: 0 auto;
+
     h1{
         padding: 15px ;
         font-weight: 650;
     }
     .container{
         gap: 20px;
+        @include for-tablet-layout {
+            flex-wrap: wrap;
+          }
+        @include for-mini-layout {
+            flex-direction: column;
+          }
         .card{
-            width: 30%;
-            min-width: 250px;
-            height: 200px;
+            flex: 1 1 25%;
+            min-height: 110px;
             background-color: #fff;
             font-weight: 550;
-            font-size: 20px;
+            font-size: 18px;
             border-radius: 2px;
-            box-shadow: 2px 14px 15px -7px rgba(30, 166, 250, 0.36);
-            background: #e6e9ff;
+            background: #384955ab;
             gap: 10px;
+            padding: 5px;
+            @include for-tablet-layout {
+                flex: 1 1 40%;
+
+              }
+              @include for-mini-layout {
+                width: 80%;
+              }
             .MuiTypography-caption{
                 font-size: 16px
             }
-        
-
+            span{
+                text-align: center;
+            }
         }
     }
     .charts{
         margin: 20px auto;
         height: 400px;
-        background: #e6e9ff;
+        background: #88b0cd8c;
+        color: #fff;
+        filter:drop-shadow(2px 4px 6px black);
         width: 80vw;
         max-width: 700px;
 

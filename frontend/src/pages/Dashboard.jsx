@@ -37,14 +37,13 @@ function CircularProgressWithLabel(props) {
 
 export default function Dashboard() {
   const { user } = useSelector(({ userModule }) => userModule);
-  console.log(user);
   const jobs = user.jobs;
   const appliedjobs = jobs.filter((job) => job.status === "applied");
   const rejectedjobs = jobs.filter((job) => job.status === "rejected");
   const interviewsjobs = jobs.filter((job) => job.status === "interviews");
 
   const data = {
-    labels: ["appliedjobs", "rejectedjobs", "interviewsjobs"],
+    labels: ["Applied-jobs", "Rejected-jobs", "Interviews-jobs"],
     datasets: [
       {
         data: [
@@ -52,46 +51,56 @@ export default function Dashboard() {
           (rejectedjobs.length / jobs.length) * 100,
           (interviewsjobs.length / jobs.length) * 100,
         ],
-        backgroundColor: ["#07ca07", "red", "blue"],
-        borderColor: ["#07ca07", "red", "blue"],
+        backgroundColor: ["#00C6B0", "#D3567F", "#0085DD"],
+        borderColor: ["#00C6B0", "#D3567F", "#0085DD"],
         borderWidth: 1,
       },
     ],
   };
+  const options= {
+    plugins: { 
+    legend: {
+      labels: {
+        color: "white", 
+        font: {
+          size: 16
+        }
+      }
+    }
+  }
+  }
   return (
     <section className="dashboard">
-      <h1>Hello {user.username}</h1>
-      <div className="container flex row wrap">
-        <div className="card flex align-center justify-center column">
+      <h1 className="text-center">Hello {user.username}</h1>
+      <div className="container flex justify-center align-center">
+        <div className="card flex align-center justify-center row">
           <span>Total jobs: </span>
           <span>{jobs.length}</span>
         </div>
         <div className="card flex align-center justify-center column">
-          <span>Total applied jobs: </span>
-          <span>{appliedjobs.length}</span>
+          <span>Total applied jobs : {appliedjobs.length} </span>
           <CircularProgressWithLabel
             value={(appliedjobs.length / jobs.length) * 100}
-            style={{ color: "#07ca07" }}
+            style={{ color: "#00C6B0" }}
           />
         </div>
         <div className="card flex align-center justify-center column">
-          <span>Total rejected jobs: </span>
-          <span>{rejectedjobs.length}</span>
+          <span>Total rejected jobs : {rejectedjobs.length} </span>
           <CircularProgressWithLabel
             value={(rejectedjobs.length / jobs.length) * 100}
-            style={{ color: "red" }}
+            style={{ color: "#D3567F" }}
           />
         </div>
         <div className="card flex align-center justify-center column">
-          <span>Total interviews jobs: </span>
-          <span>{interviewsjobs.length}</span>
+          <span>Total interviews jobs : {interviewsjobs.length} </span>
           <CircularProgressWithLabel
             value={(interviewsjobs.length / jobs.length) * 100}
+            style={{color:'#0085DD'}}
           />
         </div>
       </div>
       <div className="charts flex align-center justify-center ">
-        <Doughnut data={data} />
+        <Doughnut data={data} options={options}  />
       </div>
     </section>
   );
